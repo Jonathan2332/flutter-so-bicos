@@ -13,7 +13,7 @@ This project was designed just to be part of my portfolio as a demonstration of 
 - SOLID/Clean code
 - Design patterns (Repository, Dependency injection, State)
 - Unit tests with Mockito
-- for learning, were used [MVVM](https://github.com/Jonathan2332/so-bicos-flutter/tree/main-mvvm), Bloc (soon) and Mobx (soon) in separate branches, with the rest of the project being the same code
+- For learning, were used [MVVM](https://github.com/Jonathan2332/so-bicos-flutter/tree/main-mvvm), Bloc (soon) and Mobx (soon) in separate branches, with the rest of the project being the same code
 - Provider to DI
 - State management with Change notifier/Value notifier to reactivity
 - GoRouter to navigation
