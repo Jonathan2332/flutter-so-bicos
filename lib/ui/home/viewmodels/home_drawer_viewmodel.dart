@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:so_bicos/core/data/repositories/auth/auth_repository.dart';
-import 'package:so_bicos/core/data/repositories/jobs/job_category_repository.dart';
+import 'package:so_bicos/core/data/repositories/job/job_category_repository.dart';
 import 'package:so_bicos/ui/home/home_drawer_view_state.dart';
 
 class HomeDrawerViewModel {

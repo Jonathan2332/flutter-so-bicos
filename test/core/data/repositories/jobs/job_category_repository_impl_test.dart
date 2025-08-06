@@ -3,7 +3,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:so_bicos/core/data/datasources/job/job_category_datasource.dart';
-import 'package:so_bicos/core/data/repositories/jobs/job_category_repository_impl.dart';
+import 'package:so_bicos/core/data/repositories/job/job_category_repository_impl.dart';
 import 'package:so_bicos/core/domain/models/job/job_category.dart';
 import 'package:so_bicos/core/external/models/job/job_category_api_model.dart';
 import 'package:so_bicos/core/external/models/job/job_category_errors.dart';
