@@ -11,7 +11,7 @@ import 'package:mockito/src/dummies.dart' as _i6;
 import 'package:result_dart/result_dart.dart' as _i4;
 import 'package:so_bicos/core/data/repositories/auth/auth_repository.dart'
     as _i2;
-import 'package:so_bicos/core/data/repositories/jobs/job_category_repository.dart'
+import 'package:so_bicos/core/data/repositories/job/job_category_repository.dart'
     as _i8;
 import 'package:so_bicos/core/domain/models/auth/user.dart' as _i5;
 import 'package:so_bicos/core/domain/models/job/job_category.dart' as _i9;
