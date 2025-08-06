@@ -214,4 +214,27 @@ class JobCategoryRepositoryMock extends _i1.Mock
                 ),
           )
           as _i3.Future<_i4.ResultDart<List<_i9.JobCategory>, Exception>>);
+
+  @override
+  _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>> getCategoryById(
+    String? id,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#getCategoryById, [id]),
+            returnValue:
+                _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>>.value(
+                  _i6.dummyValue<_i4.ResultDart<_i9.JobCategory, Exception>>(
+                    this,
+                    Invocation.method(#getCategoryById, [id]),
+                  ),
+                ),
+            returnValueForMissingStub:
+                _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>>.value(
+                  _i6.dummyValue<_i4.ResultDart<_i9.JobCategory, Exception>>(
+                    this,
+                    Invocation.method(#getCategoryById, [id]),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>>);
 }
