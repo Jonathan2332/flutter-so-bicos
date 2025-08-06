@@ -8,7 +8,7 @@ import 'package:so_bicos/ui/auth/login/widgets/login_screen.dart';
 import 'package:so_bicos/ui/auth/signup/viewmodels/signup_viewmodel.dart';
 import 'package:so_bicos/ui/auth/signup/widgets/signup_screen.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
-import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
+import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
 import 'package:so_bicos/ui/home/widgets/home_screen.dart';
 
 GoRouter router(AuthRepository authRepository) => GoRouter(
@@ -21,32 +21,21 @@ GoRouter router(AuthRepository authRepository) => GoRouter(
       path: Routes.login,
       builder: (context, state) {
         return LoginScreen(
-          viewModel: LoginViewModel(
-            authRepository: context.read(),
-            appLocalizations: AppLocalizations.of(context)!,
-          ),
-        );
+        viewModel: LoginViewModel(authRepository: context.read(), appLocalizations: AppLocalizations.of(context)!),
+      );
       },
     ),
-    GoRoute(
+     GoRoute(
       path: Routes.signup,
       builder: (context, state) {
         return SignupScreen(
-          viewModel: SignupViewModel(
-            authRepository: context.read(),
-            appLocalizations: AppLocalizations.of(context)!,
-          ),
-        );
+        viewModel: SignupViewModel(authRepository: context.read(), appLocalizations: AppLocalizations.of(context)!),
+      );
       },
     ),
     GoRoute(
       path: Routes.home,
-      builder: (context, state) => HomeScreen(
-        viewModel: HomeDrawerViewModel(
-          authRepository: context.read(),
-          jobCategoryRepository: context.read(),
-        ),
-      ),
+      builder: (context, state) => HomeScreen(viewModel: HomeViewModel(authRepository: context.read()),),
     ),
   ],
 );
@@ -57,7 +46,7 @@ Future<String?> _redirect(BuildContext context, GoRouterState state) async {
   final loggingIn = state.matchedLocation == Routes.login;
   final signUpIn = state.matchedLocation == Routes.signup;
 
-  if (signUpIn && loggedUser.isError()) {
+  if(signUpIn && loggedUser.isError()) {
     return Routes.signup;
   }
 
