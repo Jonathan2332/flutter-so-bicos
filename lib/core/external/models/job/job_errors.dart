@@ -5,6 +5,11 @@ class JobFetchAllException extends JobErrors {
   JobFetchAllException({required this.message});
 }
 
+class JobFetchByAuthorException extends JobErrors {
+  String message;
+  JobFetchByAuthorException({required this.message});
+}
+
 class JobCreateException extends JobErrors {
   String message;
   JobCreateException({required this.message});
