@@ -2,12 +2,14 @@
 import 'package:so_bicos/core/domain/models/job/job_category.dart';
 
 class Job {
+  int id;
   String title;
   String description;
   JobCategory category;
   String author;
   DateTime date;
   Job({
+    required this.id,
     required this.title,
     required this.description,
     required this.category,
