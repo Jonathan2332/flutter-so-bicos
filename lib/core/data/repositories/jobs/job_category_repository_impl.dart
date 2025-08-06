@@ -11,7 +11,7 @@ extension EntityParse on Future<Result<List<JobCategoryApiModel>>> {
 }
 
 JobCategory _toEntity(JobCategoryApiModel model) {
-  return JobCategory(id: model.id ?? "unknown", name: model.name ?? "Unknown");
+  return JobCategory(id: model.id ?? "unkwnown", name: model.name ?? "Unknown");
 }
 
 class JobCategoryRepositoryImpl extends JobCategoryRepository {
@@ -25,5 +25,5 @@ class JobCategoryRepositoryImpl extends JobCategoryRepository {
 
   @override
   Future<Result<JobCategory>> getCategoryById(String id) =>
-      dataSource.getCategoryById(id).mapFold(_toEntity, (e) => e);
+      dataSource.getCategoryById(id).mapFold(_toEntity, (error) => error);
 }
