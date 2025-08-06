@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:so_bicos/ui/home/home_view_state.dart';
-import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
+import 'package:so_bicos/ui/home/home_drawer_view_state.dart';
+import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
 
 class DrawerHeaderUser extends StatefulWidget {
-  final HomeViewModel viewModel;
+  final HomeDrawerViewModel viewModel;
   const DrawerHeaderUser({super.key, required this.viewModel});
 
   @override
@@ -11,18 +11,19 @@ class DrawerHeaderUser extends StatefulWidget {
 }
 
 class _DrawerHeaderUserState extends State<DrawerHeaderUser> {
+
   @override
   void initState() {
     super.initState();
-    widget.viewModel.load();
+    widget.viewModel.loadUser();
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: widget.viewModel.viewState,
+      valueListenable: widget.viewModel.userViewState,
       builder: (_, viewState, child) {
-        if (viewState is HomeSuccessState) {
+        if (viewState is HomeUserSuccessState) {
           return DrawerHeader(
             child: Column(
               children: [Text(viewState.user.name), Text(viewState.user.email)],

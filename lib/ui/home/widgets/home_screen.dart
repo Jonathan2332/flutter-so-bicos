@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
-import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
+import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
+import 'package:so_bicos/ui/home/widgets/drawer_body_categories.dart';
 import 'package:so_bicos/ui/home/widgets/drawer_header_user.dart';
 
 class HomeScreen extends StatelessWidget {
-  final HomeViewModel viewModel;
+  final HomeDrawerViewModel viewModel;
   const HomeScreen({super.key, required this.viewModel});
 
   @override
@@ -12,10 +13,10 @@ class HomeScreen extends StatelessWidget {
     final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
           children: [
             DrawerHeaderUser(viewModel: viewModel),
+            DrawerBodyCategories(viewModel: viewModel),
             ListTile(
               title: TextButton.icon(
                 onPressed: () {
