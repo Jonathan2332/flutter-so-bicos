@@ -30,6 +30,7 @@ void main() {
   );
 
   final jobCategory = JobCategory(
+    id: "marketing_digital",
     name: "Marrketing digital",
   );
 
