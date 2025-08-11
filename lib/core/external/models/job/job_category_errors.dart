@@ -5,3 +5,8 @@ class CategoryFetchAllException extends JobCategoryErrors {
   String message;
   CategoryFetchAllException({required this.message});
 }
+
+class CategoryFetchByIdException extends JobCategoryErrors {
+  String message;
+  CategoryFetchByIdException({required this.message});
+}

@@ -3,7 +3,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:so_bicos/core/data/repositories/auth/auth_repository.dart';
-import 'package:so_bicos/core/data/repositories/jobs/job_category_repository.dart';
+import 'package:so_bicos/core/data/repositories/job/job_category_repository.dart';
 import 'package:so_bicos/core/domain/models/auth/errors.dart';
 import 'package:so_bicos/core/domain/models/auth/user.dart';
 import 'package:so_bicos/core/domain/models/job/job_category.dart';
@@ -30,6 +30,7 @@ void main() {
   );
 
   final jobCategory = JobCategory(
+    id: "marketing_digital",
     name: "Marrketing digital",
   );
 
