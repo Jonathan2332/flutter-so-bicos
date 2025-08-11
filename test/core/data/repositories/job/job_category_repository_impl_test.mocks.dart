@@ -57,4 +57,28 @@ class JobCategoryDataSourceMock extends _i1.Mock
           as _i3.Future<
             _i4.ResultDart<List<_i5.JobCategoryApiModel>, Exception>
           >);
+
+  @override
+  _i3.Future<_i4.ResultDart<_i5.JobCategoryApiModel, Exception>>
+  getCategoryById(String? id) =>
+      (super.noSuchMethod(
+            Invocation.method(#getCategoryById, [id]),
+            returnValue:
+                _i3.Future<
+                  _i4.ResultDart<_i5.JobCategoryApiModel, Exception>
+                >.value(
+                  _i6.dummyValue<
+                    _i4.ResultDart<_i5.JobCategoryApiModel, Exception>
+                  >(this, Invocation.method(#getCategoryById, [id])),
+                ),
+            returnValueForMissingStub:
+                _i3.Future<
+                  _i4.ResultDart<_i5.JobCategoryApiModel, Exception>
+                >.value(
+                  _i6.dummyValue<
+                    _i4.ResultDart<_i5.JobCategoryApiModel, Exception>
+                  >(this, Invocation.method(#getCategoryById, [id])),
+                ),
+          )
+          as _i3.Future<_i4.ResultDart<_i5.JobCategoryApiModel, Exception>>);
 }
