@@ -7,7 +7,7 @@ import 'package:so_bicos/core/external/datasources/job/category_firestore_dataso
 import 'package:so_bicos/core/external/models/job/job_category_api_model.dart';
 import 'package:so_bicos/core/external/models/job/job_category_errors.dart';
 
-import '../../../../fakes/core/external/models/jobs/job_category_api_model_fake.dart';
+import '../../../../fakes/core/external/models/job/job_category_api_model_fake.dart';
 @GenerateMocks([
   FirebaseFirestore,
   CollectionReference,

@@ -13,8 +13,12 @@ extension MapEntityParse on Future<Result<List<JobApiModel>>> {
   Future<Result<List<Job>>> mapToEntity(List<JobCategoryApiModel> categories) =>
       mapFold(
         (jobs) => jobs.map((job) {
+          if (categories.isEmpty) {
+            return job._toEntityWith(null);
+          }
+
           final jobCategory = categories.firstWhere(
-            (cat) => cat.id == job.category,
+            (cat) => cat.id == job.category, orElse: () => JobCategoryApiModel()
           );
           return job._toEntityWith(jobCategory);
         }).toList(),
@@ -77,8 +81,10 @@ class JobRepositoryImpl extends JobRepository {
     }
 
     final categories = categoriesResult.getOrNull();
-    if (categories == null) {
-      return Failure(JobFetchAllException(message: "error on get categories"));
+    if (categories == null || categories.isEmpty) {
+      return Failure(
+        JobFetchAllException(message: "error on get categories, null or empty"),
+      );
     }
 
     return dataSource.getAllJobs().mapToEntity(categories);
@@ -94,8 +100,10 @@ class JobRepositoryImpl extends JobRepository {
     }
 
     final categories = categoriesResult.getOrNull();
-    if (categories == null) {
-      return Failure(JobFetchAllException(message: "error on get categories"));
+    if (categories == null || categories.isEmpty) {
+      return Failure(
+        JobFetchAllException(message: "error on get categories, null or empty"),
+      );
     }
 
     return dataSource.getJobsByAuthor(author).mapToEntity(categories);

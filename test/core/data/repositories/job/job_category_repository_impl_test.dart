@@ -8,10 +8,11 @@ import 'package:so_bicos/core/domain/models/job/job_category.dart';
 import 'package:so_bicos/core/external/models/job/job_category_api_model.dart';
 import 'package:so_bicos/core/external/models/job/job_category_errors.dart';
 
-import '../../../../fakes/core/external/models/jobs/job_category_api_model_fake.dart';
+import '../../../../fakes/core/external/models/job/job_category_api_model_fake.dart';
 @GenerateNiceMocks([
   MockSpec<JobCategoryDataSource>(as: #JobCategoryDataSourceMock),
 ])
+
 import 'job_category_repository_impl_test.mocks.dart';
 
 void main() {
