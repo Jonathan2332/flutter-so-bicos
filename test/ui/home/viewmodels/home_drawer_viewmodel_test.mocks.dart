@@ -11,7 +11,7 @@ import 'package:mockito/src/dummies.dart' as _i6;
 import 'package:result_dart/result_dart.dart' as _i4;
 import 'package:so_bicos/core/data/repositories/auth/auth_repository.dart'
     as _i2;
-import 'package:so_bicos/core/data/repositories/jobs/job_category_repository.dart'
+import 'package:so_bicos/core/data/repositories/job/job_category_repository.dart'
     as _i8;
 import 'package:so_bicos/core/domain/models/auth/user.dart' as _i5;
 import 'package:so_bicos/core/domain/models/job/job_category.dart' as _i9;
@@ -214,4 +214,27 @@ class JobCategoryRepositoryMock extends _i1.Mock
                 ),
           )
           as _i3.Future<_i4.ResultDart<List<_i9.JobCategory>, Exception>>);
+
+  @override
+  _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>> getCategoryById(
+    String? id,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#getCategoryById, [id]),
+            returnValue:
+                _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>>.value(
+                  _i6.dummyValue<_i4.ResultDart<_i9.JobCategory, Exception>>(
+                    this,
+                    Invocation.method(#getCategoryById, [id]),
+                  ),
+                ),
+            returnValueForMissingStub:
+                _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>>.value(
+                  _i6.dummyValue<_i4.ResultDart<_i9.JobCategory, Exception>>(
+                    this,
+                    Invocation.method(#getCategoryById, [id]),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.ResultDart<_i9.JobCategory, Exception>>);
 }

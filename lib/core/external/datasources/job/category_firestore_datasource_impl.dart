@@ -31,4 +31,21 @@ class CategoryFirestoreDataSourceImpl implements JobCategoryDataSource {
       );
     }
   }
+
+  @override
+  Future<Result<JobCategoryApiModel>> getCategoryById(String id) async {
+    
+    final ref = db.collection(categoriesPath).doc(id);
+    final snapshot = await ref.get();
+
+    if (snapshot.exists) {
+      return Success(JobCategoryApiModel.fromFirestore(snapshot, null));
+    } else {
+      return Failure(
+        CategoryFetchByIdException(
+          message: "Error on get all categories, size is empty",
+        ),
+      );
+    }
+  }
 }
