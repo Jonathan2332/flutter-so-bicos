@@ -5,7 +5,7 @@ import 'package:so_bicos/core/data/repositories/job/job_category_repository.dart
 import 'package:so_bicos/core/domain/models/job/job_category.dart';
 import 'package:so_bicos/core/external/models/job/job_category_api_model.dart';
 
-extension EntityParse on Future<Result<List<JobCategoryApiModel>>> {
+extension MapEntityParse on Future<Result<List<JobCategoryApiModel>>> {
   Future<Result<List<JobCategory>>> mapToEntity() =>
       mapFold((models) => models.map(_toEntity).toList(), (error) => error);
 }
