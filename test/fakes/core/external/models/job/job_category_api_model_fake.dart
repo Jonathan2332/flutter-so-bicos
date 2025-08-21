@@ -5,4 +5,6 @@ final jobCategoryApiModelFake = JobCategoryApiModel(id: "marketing_digital", nam
 final jobCategoryApiModelFakeList = [
   JobCategoryApiModel(id: "marketing_digital", name: "Marketing digital"),
   JobCategoryApiModel(id: "edicao_de_videos", name: "Edição de vídeos"),
+  JobCategoryApiModel(id: "desenvolvedor", name: "Desenvolvedor"),
+  JobCategoryApiModel(id: "traducao", name: "Tradução"),
 ];

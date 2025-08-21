@@ -95,18 +95,37 @@ class JobRepositoryImpl extends JobRepository {
     final categoriesResult = await categoryDataSource.getAllCategories();
     if (categoriesResult.isError()) {
       return Failure(
-        JobFetchAllException(message: "error on fetch all categories"),
+        JobFetchByAuthorException(message: "error on fetch all categories"),
       );
     }
 
     final categories = categoriesResult.getOrNull();
     if (categories == null || categories.isEmpty) {
       return Failure(
-        JobFetchAllException(message: "error on get categories, null or empty"),
+        JobFetchByAuthorException(message: "error on get categories, null or empty"),
       );
     }
 
     return dataSource.getJobsByAuthor(author).mapToEntity(categories);
+  }
+
+  @override
+  Future<Result<List<Job>>> getJobsByCategory(String categoryId) async {
+     final categoriesResult = await categoryDataSource.getAllCategories();
+    if (categoriesResult.isError()) {
+      return Failure(
+        JobFetchByCategoryException(message: "error on fetch all categories"),
+      );
+    }
+
+    final categories = categoriesResult.getOrNull();
+    if (categories == null || categories.isEmpty) {
+      return Failure(
+        JobFetchByCategoryException(message: "error on get categories, null or empty"),
+      );
+    }
+
+    return dataSource.getJobsByCategoryId(categoryId).mapToEntity(categories);
   }
 
   @override
