@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:so_bicos/core/data/repositories/auth/auth_repository.dart';
 import 'package:so_bicos/core/data/repositories/job/job_repository.dart';
+import 'package:so_bicos/core/domain/models/job/job_category.dart';
 import 'package:so_bicos/ui/home/home_view_state.dart';
 
 class HomeViewModel {
-  final AuthRepository authRepository;
   final JobRepository jobRepository;
 
-  HomeViewModel({required this.authRepository, required this.jobRepository});
+  HomeViewModel({required this.jobRepository});
 
   ValueNotifier<HomeViewState> jobViewState = ValueNotifier(HomeLoadingState());
-  String? selectedCategory;
 
-  Future<void> loadJobs() async {
+  Future<void> loadJobs(JobCategory? category) async {
     jobViewState.value = HomeLoadingState();
-    final currentCategory = selectedCategory;
-    if (currentCategory != null) {
-      (await jobRepository.getJobsByCategory(currentCategory)).fold(
+    if (category != null) {
+      (await jobRepository.getJobsByCategory(category.id)).fold(
         (jobs) {
-          jobViewState.value = HomeSuccessState();
+          jobViewState.value = HomeSuccessState(jobs: jobs);
         },
         (e) {
           jobViewState.value = HomeErrorState(msg: e.toString());
@@ -27,7 +24,7 @@ class HomeViewModel {
     } else {
       (await jobRepository.getAllJobs()).fold(
         (jobs) {
-          jobViewState.value = HomeSuccessState();
+          jobViewState.value = HomeSuccessState(jobs: jobs);
         },
         (e) {
           jobViewState.value = HomeErrorState(msg: e.toString());

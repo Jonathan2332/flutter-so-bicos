@@ -9,6 +9,7 @@ import 'package:so_bicos/ui/auth/signup/viewmodels/signup_viewmodel.dart';
 import 'package:so_bicos/ui/auth/signup/widgets/signup_screen.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
+import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
 import 'package:so_bicos/ui/home/widgets/home_screen.dart';
 
 GoRouter router(AuthRepository authRepository) => GoRouter(
@@ -42,7 +43,10 @@ GoRouter router(AuthRepository authRepository) => GoRouter(
     GoRoute(
       path: Routes.home,
       builder: (context, state) => HomeScreen(
-        viewModel: HomeDrawerViewModel(
+        viewModel: HomeViewModel(
+          jobRepository: context.read(),
+        ),
+        drawerViewModel: HomeDrawerViewModel(
           authRepository: context.read(),
           jobCategoryRepository: context.read(),
         ),
