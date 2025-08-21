@@ -35,7 +35,6 @@ void main() {
 
   group("getAllJobs", () {
     test('getAllJobs should return a Success list of Job', () async {
-
       final Result<List<JobApiModel>> dummy = Success(jobApiModelFakeList);
       provideDummy(dummy);
 
@@ -81,7 +80,6 @@ void main() {
     test(
       'getJobsByAuthor should return a Failure with JobFetchByAuthorException',
       () async {
-
         final Result<List<JobApiModel>> dummy = Failure(
           JobFetchByAuthorException(message: ""),
         );
@@ -95,6 +93,43 @@ void main() {
         );
         expect(result, isA<Result<List<Job>>>());
         expect(result.exceptionOrNull(), isA<JobFetchByAuthorException>());
+        expect(result.isError(), true);
+      },
+    );
+  });
+
+  group("getJobsByCategory", () {
+    test('getJobsByCategory should return a Success list of Job', () async {
+      final Result<List<JobApiModel>> dummy = Success(jobApiModelFakeList);
+      provideDummy(dummy);
+
+      when(
+        dataSource.getJobsByCategoryId("desenvolvedor"),
+      ).thenAnswer((_) async => dummy);
+      final result = await repository.getJobsByCategory("desenvolvedor");
+      expect(result, isA<Result<List<Job>>>());
+      expect(
+        result.getOrNull()?.firstOrNull?.category.id,
+        jobApiModelFakeList.first.category,
+      );
+    });
+
+    test(
+      'getJobsByCategory should return a Failure with JobFetchByCategoryException',
+      () async {
+        final Result<List<JobApiModel>> dummy = Failure(
+          JobFetchByCategoryException(message: ""),
+        );
+        provideDummy(dummy);
+
+        when(
+          dataSource.getJobsByCategoryId(jobApiModelFake.category),
+        ).thenAnswer((_) async => dummy);
+        final result = await repository.getJobsByCategory(
+          jobApiModelFake.category!,
+        );
+        expect(result, isA<Result<List<Job>>>());
+        expect(result.exceptionOrNull(), isA<JobFetchByCategoryException>());
         expect(result.isError(), true);
       },
     );
