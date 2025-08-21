@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:so_bicos/core/domain/models/job/job_category.dart';
 import 'package:so_bicos/ui/home/home_drawer_view_state.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
 
 class DrawerBodyCategories extends StatefulWidget {
   final HomeDrawerViewModel viewModel;
-  const DrawerBodyCategories({super.key, required this.viewModel});
+  final Function(JobCategory) onSelectedCategory;
+  const DrawerBodyCategories({
+    super.key,
+    required this.viewModel,
+    required this.onSelectedCategory,
+  });
 
   @override
   State<DrawerBodyCategories> createState() => _DrawerBodyCategoriesState();
@@ -28,10 +34,12 @@ class _DrawerBodyCategoriesState extends State<DrawerBodyCategories> {
             child: ListView.builder(
               padding: EdgeInsets.zero,
               itemCount: categories.length,
-              itemBuilder: (context, index) =>
-              TextButton(onPressed: () {
-                //TODO: change filter on home
-              }, child: ListTile(title: Text(categories[index].name))),
+              itemBuilder: (context, index) => TextButton(
+                onPressed: () {
+                  widget.onSelectedCategory(categories[index]);
+                },
+                child: ListTile(title: Text(categories[index].name)),
+              ),
             ),
           );
         }
