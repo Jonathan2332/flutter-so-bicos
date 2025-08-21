@@ -10,6 +10,11 @@ class JobFetchByAuthorException extends JobErrors {
   JobFetchByAuthorException({required this.message});
 }
 
+class JobFetchByCategoryException extends JobErrors {
+  String message;
+  JobFetchByCategoryException({required this.message});
+}
+
 class JobCreateException extends JobErrors {
   String message;
   JobCreateException({required this.message});
