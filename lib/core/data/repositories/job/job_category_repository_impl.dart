@@ -5,15 +5,13 @@ import 'package:so_bicos/core/data/repositories/job/job_category_repository.dart
 import 'package:so_bicos/core/domain/models/job/job_category.dart';
 import 'package:so_bicos/core/external/models/job/job_category_api_model.dart';
 
-extension EntityParse on Future<Result<List<JobCategoryApiModel>>> {
+extension MapEntityParse on Future<Result<List<JobCategoryApiModel>>> {
   Future<Result<List<JobCategory>>> mapToEntity() =>
-      mapFold(_toEntity, (error) => error);
+      mapFold((models) => models.map(_toEntity).toList(), (error) => error);
 }
 
-List<JobCategory> _toEntity(List<JobCategoryApiModel> models) {
-  return models
-      .map((category) => JobCategory(name: category.name ?? "Unknown"))
-      .toList();
+JobCategory _toEntity(JobCategoryApiModel model) {
+  return JobCategory(id: model.id ?? "unknown", name: model.name ?? "Unknown");
 }
 
 class JobCategoryRepositoryImpl extends JobCategoryRepository {
@@ -24,4 +22,8 @@ class JobCategoryRepositoryImpl extends JobCategoryRepository {
   @override
   Future<Result<List<JobCategory>>> getAllCategories() =>
       dataSource.getAllCategories().mapToEntity();
+
+  @override
+  Future<Result<JobCategory>> getCategoryById(String id) =>
+      dataSource.getCategoryById(id).mapFold(_toEntity, (e) => e);
 }
