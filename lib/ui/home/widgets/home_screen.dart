@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
+import 'package:so_bicos/ui/designsystem/themes/colors.dart';
 import 'package:so_bicos/ui/home/home_view_state.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
@@ -91,15 +92,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     final job = viewState.jobs[index];
                     return ListBody(
                       children: [
-                        Card(   
-                          margin: EdgeInsetsGeometry.only(top: 8, bottom: 8, left: 16, right: 16),
+                        Card(
+                          margin: EdgeInsetsGeometry.only(
+                            top: 8,
+                            bottom: 8,
+                            left: 16,
+                            right: 16,
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  DateFormat("yyyy-MM-dd HH:mm:ss").format(job.date),
+                                  DateFormat(
+                                    "yyyy-MM-dd HH:mm:ss",
+                                  ).format(job.date),
                                   style: GoogleFonts.rubik(
                                     textStyle: Theme.of(
                                       context,
@@ -111,9 +119,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   job.title,
                                   style: GoogleFonts.rubik(
-                                    textStyle: Theme.of(
-                                      context,
-                                    ).textTheme.titleMedium,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
+                                          color: Theme.of(context).primaryColor,
+                                        ),
                                   ),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
