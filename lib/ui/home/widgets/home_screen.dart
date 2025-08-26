@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
+import 'package:so_bicos/routing/routes.dart';
+import 'package:so_bicos/ui/designsystem/components/app_navigation_destination.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
-import 'package:so_bicos/ui/designsystem/themes/colors.dart';
 import 'package:so_bicos/ui/home/home_view_state.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
@@ -32,31 +33,62 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+    final navDestinations = [
+      AppNavigationDestination(
+        icon: Icon(Icons.home),
+        label: appLocalizations.home,
+        route: Routes.home,
+      ),
+      AppNavigationDestination(
+        icon: Icon(Icons.account_circle_sharp),
+        label: appLocalizations.profile,
+        route: Routes.perfil,
+      ),
+      AppNavigationDestination(
+        icon: Icon(Icons.settings),
+        label: appLocalizations.settings,
+        route: Routes.settings,
+      ),
+    ];
     return Scaffold(
       drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeaderUser(viewModel: widget.drawerViewModel),
-            DrawerBodyCategories(
-              viewModel: widget.drawerViewModel,
-              onSelectedCategory: (category) {
-                Navigator.of(context).pop(context);
-                widget.viewModel.loadJobs(category);
-              },
-            ),
-            ListTile(
-              title: TextButton.icon(
-                onPressed: () {
-                  widget.drawerViewModel.signout();
-                },
-                label: Text(appLocalizations.logout),
-                icon: Icon(Icons.logout),
+        child: Builder(
+          builder: (context) {
+            return Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),//Android 15
+              child: Column(
+                children: [
+                  DrawerHeaderUser(viewModel: widget.drawerViewModel),
+                  DrawerBodyCategories(
+                    viewModel: widget.drawerViewModel,
+                    onSelectedCategory: (category) {
+                      Navigator.of(context).pop(context);
+                      widget.viewModel.loadJobs(category);
+                    },
+                  ),
+                  ListTile(
+                    title: TextButton.icon(
+                      onPressed: () {
+                        widget.drawerViewModel.signout();
+                      },
+                      label: Text(appLocalizations.logout),
+                      icon: Icon(Icons.logout),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+            );
+          }
         ),
       ),
       appBar: AppBar(
+        toolbarHeight: MediaQuery.of(context).padding.top + kToolbarHeight,//Android 15
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.elliptical(MediaQuery.sizeOf(context).width, 56.0),
+          ),
+        ),
         leading: Container(),
         flexibleSpace: Padding(
           padding: EdgeInsets.only(
@@ -78,6 +110,52 @@ class _HomeScreenState extends State<HomeScreen> {
             barHintText: appLocalizations.search,
             suggestionsBuilder: (context, controller) => [],
           ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(28)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withValues(alpha: 0.5),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
+              child: SizedBox(
+                height: 70,
+                width: 250,
+                child: NavigationBar(
+                  overlayColor: WidgetStateProperty.resolveWith<Color?>((
+                    states,
+                  ) {
+                    return states.contains(WidgetState.focused)
+                        ? null
+                        : Colors.transparent;
+                  }),
+                  backgroundColor: Colors.transparent,
+                  onDestinationSelected: (index) {
+                    context.go(navDestinations[index].route);
+                  },
+                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+                  destinations: navDestinations,
+                  selectedIndex: navDestinations.indexWhere(
+                    (dest) =>
+                        dest.route == GoRouter.of(context).state.uri.toString(),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       body: Center(
@@ -105,9 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  DateFormat(
-                                    "yyyy-MM-dd HH:mm:ss",
-                                  ).format(job.date),
+                                  widget.viewModel.formatJobDate(job),
                                   style: GoogleFonts.rubik(
                                     textStyle: Theme.of(
                                       context,
@@ -123,7 +199,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .textTheme
                                         .titleMedium
                                         ?.copyWith(
-                                          color: Theme.of(context).primaryColor,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
                                         ),
                                   ),
                                   maxLines: 2,
@@ -143,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 onRefresh: () async {
-                  widget.viewModel.loadJobs(null);
+                  return widget.viewModel.loadJobs(null, refreshing: true);
                 },
               );
             } else if (viewState is HomeErrorState) {

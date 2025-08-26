@@ -1,4 +1,7 @@
 {
+  "home": "Home",
+  "settings": "Settings",
+  "profile": "Profile",
   "login": "Login",
   "signup": "Sign up",
   "welcome": "Welcome",
