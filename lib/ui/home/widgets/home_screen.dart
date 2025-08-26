@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       AppNavigationDestination(
         icon: Icon(Icons.account_circle_sharp),
         label: appLocalizations.profile,
-        route: Routes.perfil,
+        route: Routes.profile,
       ),
       AppNavigationDestination(
         icon: Icon(Icons.settings),
