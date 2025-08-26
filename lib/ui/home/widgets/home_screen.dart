@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:so_bicos/routing/routes.dart';
 import 'package:so_bicos/ui/designsystem/components/app_navigation_destination.dart';
+import 'package:so_bicos/ui/designsystem/components/blur_filter.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 import 'package:so_bicos/ui/designsystem/themes/dimens.dart';
 import 'package:so_bicos/ui/home/home_view_state.dart';
@@ -55,7 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
     final barBorderRadius = const BorderRadius.all(Radius.circular(Dimens.barBorderRadius));
     final barAlphaBlur = 0.7;
-    final barBlur = ImageFilter.blur(sigmaX: 3, sigmaY: 3);
     return Scaffold(
       drawer: Drawer(
         child: Builder(
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
             bottom: Radius.elliptical(MediaQuery.sizeOf(context).width, 56.0),
           ),
           child: BackdropFilter(
-            filter: barBlur,
+            filter: kBlurFilter,
             child: AppBar(
               backgroundColor: Theme.of(context).colorScheme.inversePrimary.withValues(alpha: barAlphaBlur),
               leading: Container(),
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ClipRRect(
             borderRadius: barBorderRadius,
             child: BackdropFilter(
-              filter: barBlur,
+              filter: kBlurFilter,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
