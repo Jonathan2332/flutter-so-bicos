@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -54,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
         route: Routes.settings,
       ),
     ];
-    final barBorderRadius = const BorderRadius.all(Radius.circular(Dimens.barBorderRadius));
+    final barBorderRadius = const BorderRadius.all(Radius.circular(Dimens.appBarBorderRadius));
     final barAlphaBlur = 0.7;
     return Scaffold(
       drawer: Drawer(
