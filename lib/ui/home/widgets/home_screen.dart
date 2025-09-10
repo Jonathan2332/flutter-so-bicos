@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final appLocalizations = AppLocalizations.of(context)!;
 
     return SbScaffold(
+      showNavigationBar: true,
       drawer: SbDrawer(
         child: Column(
           children: [

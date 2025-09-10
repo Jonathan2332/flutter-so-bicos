@@ -9,13 +9,14 @@ class SbScaffold extends StatelessWidget {
   final Widget? body;
   final Widget? drawer;
   final Widget? appBar;
-  final Widget? floatingActionButton;
-  const SbScaffold({super.key, this.body, this.drawer, this.appBar, this.floatingActionButton});
+  final bool showNavigationBar;
+  const SbScaffold({super.key, this.body, this.drawer, this.appBar, this.showNavigationBar = true});
 
   @override
   Widget build(BuildContext context) {
+    
     final appLocalizations = AppLocalizations.of(context)!;
-    final navDestinations = [
+    final navDestinationsBase = [
       SbNavigationDestination(
         icon: Icon(Icons.home),
         label: appLocalizations.home,
@@ -37,13 +38,13 @@ class SbScaffold extends StatelessWidget {
       drawer: drawer,
       extendBodyBehindAppBar: true,
       extendBody: true,
-      appBar: SbAppBar(
+      appBar: appBar != null ? SbAppBar(
         preferredSize: Size.fromHeight(
           MediaQuery.of(context).padding.top + kToolbarHeight,
         ),
         flexibleSpace: appBar,
-      ),
-      floatingActionButton: SbNavigationBar(navDestinations: navDestinations),
+      ) : null,
+      floatingActionButton: showNavigationBar ? SbNavigationBar(navDestinations: navDestinationsBase) : null,
       body: body,
     );
   }
