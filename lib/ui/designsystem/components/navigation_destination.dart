@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AppNavigationDestination extends NavigationDestination {
+class SbNavigationDestination extends NavigationDestination {
   final String route;
-  const AppNavigationDestination({
+  const SbNavigationDestination({
     super.key,
     super.selectedIcon,
     required super.icon,
