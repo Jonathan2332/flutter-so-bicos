@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:so_bicos/routing/routes.dart';
 import 'package:so_bicos/ui/auth/auth_view_state.dart';
 import 'package:so_bicos/ui/auth/login/viewmodels/login_viewmodel.dart';
+import 'package:so_bicos/ui/designsystem/components/scaffold.dart';
 import 'package:so_bicos/ui/designsystem/components/text_form_field.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 
@@ -16,8 +18,14 @@ class LoginScreen extends StatelessWidget {
     final formLoginKey = GlobalKey<FormState>();
     final email = TextEditingController();
     final password = TextEditingController();
-    return Scaffold(
-      appBar: AppBar(title: Text(appLocalizations.login)),
+    return SbScaffold(
+      showNavigationBar: false,
+      appBar: Center(
+        child: Text(
+          appLocalizations.login,
+          style: GoogleFonts.roboto(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsetsGeometry.all(12),
         child: Form(

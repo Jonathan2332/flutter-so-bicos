@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:so_bicos/ui/auth/auth_view_state.dart';
 import 'package:so_bicos/ui/auth/signup/viewmodels/signup_viewmodel.dart';
+import 'package:so_bicos/ui/designsystem/components/scaffold.dart';
 import 'package:so_bicos/ui/designsystem/components/text_form_field.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 
@@ -16,8 +18,14 @@ class SignupScreen extends StatelessWidget {
     final password = TextEditingController();
     final passwordConfirm = TextEditingController();
 
-    return Scaffold(
-      appBar: AppBar(title: Text(appLocalizations.signup)),
+    return SbScaffold(
+      showNavigationBar: false,
+      appBar: Center(
+        child: Text(
+          appLocalizations.signup,
+          style: GoogleFonts.roboto(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsetsGeometry.all(12),
         child: Form(
