@@ -15,6 +15,13 @@ import 'package:so_bicos/ui/designsystem/themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   if (kIsWeb) {
     final json = await _loadStringAsset(Assets.googleServices);
     await Firebase.initializeApp(

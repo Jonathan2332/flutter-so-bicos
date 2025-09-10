@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:so_bicos/routing/routes.dart';
 import 'package:so_bicos/ui/auth/auth_view_state.dart';
 import 'package:so_bicos/ui/auth/login/viewmodels/login_viewmodel.dart';
-import 'package:so_bicos/ui/designsystem/components/app_text_form_field.dart';
+import 'package:so_bicos/ui/designsystem/components/text_form_field.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Text(appLocalizations.welcome, style: TextStyle(fontSize: 26)),
                 SizedBox(height: 16),
-                AppTextFormField(
+                SbTextFormField(
                   controller: email,
                   enabled: viewState is! AuthLoadingState,
                   label: Text(appLocalizations.email),
@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: 16),
                 ValueListenableBuilder(
                   valueListenable: viewModel.obscureTextPassword,
-                  builder: (_, obscureText, _) => AppTextFormField(
+                  builder: (_, obscureText, _) => SbTextFormField(
                     controller: password,
                     enabled: viewState is! AuthLoadingState,
                     label: Text(appLocalizations.password),

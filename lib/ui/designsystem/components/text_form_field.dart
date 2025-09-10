@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AppTextFormField extends StatelessWidget {
+class SbTextFormField extends StatelessWidget {
 
   final TextEditingController? controller;
   final bool enabled;
@@ -16,7 +16,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String? text)? onSaved;
   final void Function(String? text)? onChanged;
 
-  const AppTextFormField({
+  const SbTextFormField({
     super.key,
     this.controller,
     this.enabled = true,

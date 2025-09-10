@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:so_bicos/ui/auth/auth_view_state.dart';
 import 'package:so_bicos/ui/auth/signup/viewmodels/signup_viewmodel.dart';
-import 'package:so_bicos/ui/designsystem/components/app_text_form_field.dart';
+import 'package:so_bicos/ui/designsystem/components/text_form_field.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -32,7 +32,7 @@ class SignupScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 26),
                 ),
                 SizedBox(height: 16),
-                AppTextFormField(
+                SbTextFormField(
                   controller: email,
                   enabled: viewState is! AuthLoadingState,
                   label: Text(appLocalizations.email),
@@ -43,7 +43,7 @@ class SignupScreen extends StatelessWidget {
                 SizedBox(height: 16),
                 ValueListenableBuilder(
                   valueListenable: viewModel.obscureTextPassword,
-                  builder: (_, obscureText, _) => AppTextFormField(
+                  builder: (_, obscureText, _) => SbTextFormField(
                     controller: password,
                     enabled: viewState is! AuthLoadingState,
                     label: Text(appLocalizations.password),
@@ -63,7 +63,7 @@ class SignupScreen extends StatelessWidget {
                 SizedBox(height: 16),
                 ValueListenableBuilder(
                   valueListenable: viewModel.obscureTextPasswordConfirm,
-                  builder: (_, obscureText, _) => AppTextFormField(
+                  builder: (_, obscureText, _) => SbTextFormField(
                     controller: passwordConfirm,
                     enabled: viewState is! AuthLoadingState,
                     label: Text(appLocalizations.repeat_password),
