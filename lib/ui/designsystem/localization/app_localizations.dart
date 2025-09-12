@@ -199,6 +199,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search'**
   String get search;
+
+  /// No description provided for @app.
+  ///
+  /// In en, this message translates to:
+  /// **'App'**
+  String get app;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @light_theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Light theme'**
+  String get light_theme;
+
+  /// No description provided for @dark_theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark theme'**
+  String get dark_theme;
+
+  /// No description provided for @system_theme.
+  ///
+  /// In en, this message translates to:
+  /// **'System default'**
+  String get system_theme;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
 }
 
 class _AppLocalizationsDelegate

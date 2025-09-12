@@ -61,4 +61,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search => 'Search';
+
+  @override
+  String get app => 'App';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get light_theme => 'Light theme';
+
+  @override
+  String get dark_theme => 'Dark theme';
+
+  @override
+  String get system_theme => 'System default';
+
+  @override
+  String get language => 'Language';
 }

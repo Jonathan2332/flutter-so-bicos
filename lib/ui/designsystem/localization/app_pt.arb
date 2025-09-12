@@ -15,5 +15,11 @@
   "password_mus_be_at_least_characters": "A senha deve ter no minimo 6 caracteres",
   "passwords_dont_match": "As senhas não correspondem",
   "logout": "Sair",
-  "search": "Buscar"
+  "search": "Buscar",
+  "app": "App",
+  "theme": "Tema",
+  "light_theme": "Tema claro",
+  "dark_theme": "Tema escuro",
+  "system_theme": "Padrão do sistema",
+  "language": "Idioma"
 }

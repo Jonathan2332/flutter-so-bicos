@@ -15,5 +15,11 @@
   "password_mus_be_at_least_characters": "Password must be at least 6 characters long",
   "passwords_dont_match": "Passwords don't match",
   "logout": "Logout",
-  "search": "Search"
+  "search": "Search",
+  "app": "App",
+  "theme": "Theme",
+  "light_theme": "Light theme",
+  "dark_theme": "Dark theme",
+  "system_theme": "System default",
+  "language": "Language"
 }

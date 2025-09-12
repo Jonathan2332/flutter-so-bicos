@@ -61,4 +61,22 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get search => 'Buscar';
+
+  @override
+  String get app => 'App';
+
+  @override
+  String get theme => 'Tema';
+
+  @override
+  String get light_theme => 'Tema claro';
+
+  @override
+  String get dark_theme => 'Tema escuro';
+
+  @override
+  String get system_theme => 'Padrão do sistema';
+
+  @override
+  String get language => 'Idioma';
 }
