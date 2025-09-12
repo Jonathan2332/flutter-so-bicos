@@ -23,7 +23,7 @@ class SignupScreen extends StatelessWidget {
       appBar: Center(
         child: Text(
           appLocalizations.signup,
-          style: GoogleFonts.roboto(fontSize: 22, fontWeight: FontWeight.bold),
+          style: GoogleFonts.inter(fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(

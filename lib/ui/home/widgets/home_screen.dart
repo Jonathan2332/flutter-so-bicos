@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:so_bicos/routing/routes.dart';
-import 'package:so_bicos/ui/designsystem/components/app_bar.dart';
 import 'package:so_bicos/ui/designsystem/components/drawer.dart';
-import 'package:so_bicos/ui/designsystem/components/navigation_bar.dart';
-import 'package:so_bicos/ui/designsystem/components/navigation_destination.dart';
 import 'package:so_bicos/ui/designsystem/components/scaffold.dart';
 import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 import 'package:so_bicos/ui/home/home_view_state.dart';

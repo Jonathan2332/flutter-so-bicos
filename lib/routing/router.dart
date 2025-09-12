@@ -11,6 +11,8 @@ import 'package:so_bicos/ui/designsystem/localization/app_localizations.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_drawer_viewmodel.dart';
 import 'package:so_bicos/ui/home/viewmodels/home_viewmodel.dart';
 import 'package:so_bicos/ui/home/widgets/home_screen.dart';
+import 'package:so_bicos/ui/settings/viewmodels/settings_viewmodel.dart';
+import 'package:so_bicos/ui/settings/widgets/settings_screen.dart';
 
 GoRouter router(AuthRepository authRepository) => GoRouter(
   initialLocation: Routes.home,
@@ -51,6 +53,10 @@ GoRouter router(AuthRepository authRepository) => GoRouter(
           jobCategoryRepository: context.read(),
         ),
       ),
+    ),
+    GoRoute(
+      path: Routes.settings,
+      builder: (context, state) => SettingsScreen(viewModel: SettingsViewmodel(),),
     ),
   ],
 );
